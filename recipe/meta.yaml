@@ -41,7 +41,7 @@ test:
 
 about:
   home: "https://github.com/eic/eic-smear"
-  license: "LGPL-3.0"
+  license: "GPL-3.0"
   summary: "Fast detector smearing for EIC physics studies (ROOT-based)"
 
 extra:
