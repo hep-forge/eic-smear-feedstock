@@ -1,0 +1,25 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -24,6 +24,13 @@
+ cmake_minimum_required(VERSION 3.10)
+ project(eicsmear VERSION 1.1.16 LANGUAGES CXX )
+ 
++# conda: force $PREFIX/include as a SYSTEM include unconditionally.
++# HepMC3's modern target-based CMake config never sets the legacy
++# HEPMC3_INCLUDE_DIR variable this file reads for HepMC3 headers.
++if(DEFINED ENV{PREFIX})
++  include_directories(SYSTEM $ENV{PREFIX}/include)
++endif()
++
+ # cmake needs a bit of help to find modules
+ set(
+    CMAKE_MODULE_PATH
+@@ -386,7 +393,7 @@
+   DESTINATION  include/eicsmear
+   )
+ INSTALL(DIRECTORY ${CMAKE_SOURCE_DIR}/include/eicsmear/smear
+-  DESTINATION DESTINATION  include/eicsmear
++  DESTINATION  include/eicsmear
+   )
+ 
+ INSTALL(FILES ${CMAKE_SOURCE_DIR}/include/eicsmear/functions.h

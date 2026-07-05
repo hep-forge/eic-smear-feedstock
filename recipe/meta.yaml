@@ -1,10 +1,11 @@
 {% set versions = {
-    "0.0.0": "REPLACE_WITH_SHA256"
+    "1.1.17": "1a9aa4079626346e45d4e04cc5c577ad09b01544d6c7d3e219d7bb3e18751808"
 } %}
 
 {% set version = environ.get('COMMIT_VERSION', None) %}
 {% set version = version or versions.keys()|first %}
 {% set version = version|string %}
+{% set root_tag = (root or '')|replace('.', '') %}
 
 {% set name = environ.get('ANACONDA_PACKAGE', 'eic-smear')|string|lower %}
 
@@ -13,13 +14,16 @@ package:
   version: {{ environ.get('ANACONDA_VERSION', version)|replace("-", ".") }}
 
 source:
-  url: "https://github.com/eic/eic-smear/archive/refs/tags/{{ version }}.tar.gz"   # TODO: confirm upstream's actual tag/tarball naming
+  url: "https://github.com/eic/eic-smear/archive/refs/tags/{{ version }}.tar.gz"
   {% if versions.get(version, None) %}
   sha256: {{ versions.get(version) }}
   {% endif %}
+  patches:
+    - patches/force-prefix-include.patch
 
 build:
   number: 0
+  string: "root{{ root_tag }}"
   run_exports:
     - {{ pin_subpackage(name, max_pin="x.x.x") }}
 
@@ -28,21 +32,34 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - {{ stdlib('c') }}
+    - root {{ root }}.*
     - cmake
     - make
   host:
-    # TODO: library dependencies
+    - root {{ root }}.*
+    - hepmc>=3.2.6 root{{ root_tag }}
+    - zlib
   run:
-    # TODO: runtime dependencies
+    - root {{ root }}.*
+    - hepmc>=3.2.6 root{{ root_tag }}
+    - zlib
 
 test:
   commands:
-    - echo "TODO: a real smoke test"
+    - test -x "${PREFIX}/bin/eic-smear"
+    - test -f "${PREFIX}/lib/libeicsmear.so"
 
 about:
   home: "https://github.com/eic/eic-smear"
   license: "GPL-3.0"
   summary: "Fast detector smearing for EIC physics studies (ROOT-based)"
+  description: |
+    eic-smear provides a fast, parameterized detector-response smearing
+    library and ROOT-based analysis tree tools for EIC physics studies,
+    reading generator output (Pythia, Djangoh, Milou, Pepsi, Rapgap,
+    Sartre, DPMJet, HepMC) and applying configurable detector acceptance
+    and resolution models. Pythia6-dependent code paths are not built
+    here (no pythia6 in hep-forge).
 
 extra:
   recipe-maintainers:
