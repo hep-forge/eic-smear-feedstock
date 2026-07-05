@@ -10,3 +10,10 @@ c_compiler:
   - gcc
 cxx_compiler:
   - gxx
+
+# matches hep-forge's hepmc-feedstock, the only root/python pair it's
+# currently published for
+python:
+  - "3.12"
+root:
+  - 6.34
