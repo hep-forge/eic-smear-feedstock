@@ -10,6 +10,14 @@ cd build
 # HEPMC3_LIBRARIES variables that HepMC3Config.cmake never sets -- force
 # them directly (the include side is handled by
 # patches/force-prefix-include.patch, same issue estarlight-feedstock hit).
+#
+# Belt and suspenders on the include side too: in estarlight-feedstock
+# the equivalent CMakeLists.txt patch reproducibly did not reach
+# CXX_INCLUDES in the real cross-compiling conda-build environment even
+# though it worked in isolated manual tests. CPLUS_INCLUDE_PATH is a
+# GCC-native env var honored regardless of what CMake generates.
+export CPLUS_INCLUDE_PATH="${PREFIX}/include${CPLUS_INCLUDE_PATH:+:$CPLUS_INCLUDE_PATH}"
+
 cmake .. \
   -DCMAKE_INSTALL_PREFIX="${PREFIX}" \
   -DCMAKE_BUILD_TYPE=Release \
