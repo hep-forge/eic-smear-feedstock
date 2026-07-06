@@ -1,6 +1,6 @@
 # eic-smear-feedstock
 
-[![hep-forge](https://img.shields.io/badge/package-hep--forge%2Feic-smear-orange.svg)](https://anaconda.org/hep-forge/eic-smear)
+[![hep-forge](https://img.shields.io/badge/package-hep--forge%2Feic--smear-orange.svg)](https://anaconda.org/hep-forge/eic-smear)
 [![Build & Upload](https://github.com/hep-forge/eic-smear-feedstock/actions/workflows/autoupload.yml/badge.svg)](https://github.com/hep-forge/eic-smear-feedstock/actions/workflows/autoupload.yml)
 [![Anaconda Version](https://anaconda.org/hep-forge/eic-smear/badges/version.svg)](https://anaconda.org/hep-forge/eic-smear)
 [![Anaconda Platforms](https://anaconda.org/hep-forge/eic-smear/badges/platforms.svg)](https://anaconda.org/hep-forge/eic-smear)
@@ -11,6 +11,16 @@ Builds linux-amd64 + linux-arm64 in one matrix workflow and uploads to the
 
 Fast detector smearing for EIC physics studies (ROOT-based)
 
+## Architectures
+
+| Architecture | Latest published |
+|--------------|------------------|
+| linux-amd64 (`linux-64`) | ✅ `1.1.17` |
+| linux-arm64 (`linux-aarch64`) | ✅ `1.1.17` |
+
+_As of the last feedstock render; the badges above are live._
+
+
 ## Install
 
 ```bash
@@ -20,3 +30,4 @@ conda install -c hep-forge -c conda-forge eic-smear
 ## Maintainers
 
 * [@meiyasan](https://github.com/meiyasan/)
+
