@@ -16,4 +16,4 @@ cxx_compiler:
 python:
   - "3.12"
 root:
-  - 6.34
+  - 6.38
