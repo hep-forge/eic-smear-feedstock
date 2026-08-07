@@ -13,12 +13,7 @@ Fast detector smearing for EIC physics studies (ROOT-based)
 
 ## Architectures
 
-| Architecture | Latest published |
-|--------------|------------------|
-| linux-amd64 (`linux-64`) | ✅ `1.1.17` |
-| linux-arm64 (`linux-aarch64`) | ✅ `1.1.17` |
-
-_As of the last feedstock render; the badges above are live._
+State per architecture: see the platforms badge above or [anaconda.org/hep-forge/eic-smear](https://anaconda.org/hep-forge/eic-smear).
 
 
 ## Install
