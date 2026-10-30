@@ -15,8 +15,8 @@ Fast detector smearing for EIC physics studies (ROOT-based)
 
 | Architecture | Latest published |
 |--------------|------------------|
-| linux-amd64 (`linux-64`) | ✅ `1.1.17` |
-| linux-arm64 (`linux-aarch64`) | ✅ `1.1.17` |
+| linux-amd64 (`linux-64`) | ✅ `1.2.3` |
+| linux-arm64 (`linux-aarch64`) | ✅ `1.2.3` |
 
 _As of the last feedstock render; the badges above are live._
 
