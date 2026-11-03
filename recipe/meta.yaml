@@ -56,7 +56,8 @@ requirements:
 test:
   commands:
     - test -x "${PREFIX}/bin/eic-smear"
-    - test -f "${PREFIX}/lib/libeicsmear.so"
+    - test -f "${PREFIX}/lib/libeicsmear.so"  # [linux]
+    - test -f "${PREFIX}/lib/libeicsmear.dylib"  # [osx]
 
 about:
   home: "https://github.com/eic/eic-smear"

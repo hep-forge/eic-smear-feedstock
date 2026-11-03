@@ -22,8 +22,8 @@ cmake .. \
   -DCMAKE_INSTALL_PREFIX="${PREFIX}" \
   -DCMAKE_BUILD_TYPE=Release \
   -DHepMC3_DIR="${PREFIX}/share/HepMC3/cmake" \
-  -DHEPMC3_LIB="${PREFIX}/lib/libHepMC3.so" \
-  -DHEPMC3_LIBRARIES="${PREFIX}/lib/libHepMC3.so"
+  -DHEPMC3_LIB="${PREFIX}/lib/libHepMC3${SHLIB_EXT}" \
+  -DHEPMC3_LIBRARIES="${PREFIX}/lib/libHepMC3${SHLIB_EXT}"
 
 NPROC=$(nproc 2>/dev/null || sysctl -n hw.ncpu)
 make -j"$NPROC"
